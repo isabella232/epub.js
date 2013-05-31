@@ -1,11 +1,11 @@
-FuturePress
+Epub.js
 ================================
 
 ![FuturePress Views](http://fchasen.com/futurepress/fp.png)
 
-FuturePress is a javascript library for rendering ePUB's in the browser, across many devices.
+Epub.js is a javascript library for rendering ePUB's in the browser, across many devices.
 
-FPJS provides common ebook functions (such as persistence and pagination) without the need to develop a dedicated application or plugin.
+Epub.js provides common ebook functions (such as persistence and pagination) without the need to develop a dedicated application or plugin.
 
 Unlike an application, our HTML / Javascript reader can be hosted anywhere and can be easily customized using javascript, such as changing the interface or adding annotation functionality.
 
@@ -80,9 +80,9 @@ The browser tells the reader when there is Internet connectivity, and by listeni
 Hooks
 -------------------------
 
-Similar to a plugins, FPJS implements events that can be "hooked" into.
+Similar to a plugins, FPJS implements events that can be "hooked" into. Thus you can interact with and manipulate the contents of the book.
 
-Examples of this functionality is loading videos from youtube links before displaying a chapters contents.
+Examples of this functionality is loading videos from youtube links before displaying a chapters contents or implementing annotation.
 
 Hooks require a event to latch onto and a callback for when they are finished.
 
