@@ -70,6 +70,7 @@
 
         this.Book.on("book:ready", function() {
           var ready = new CustomEvent('book-ready', { "bubbles" : true, "cancelable" : true });
+          console.log("ready")
           element.dispatchEvent(ready);
         });
 
