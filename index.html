@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>epub.js</title>
+    
+    <link rel="stylesheet" type="text/css" href="screen.css">
+    
+    
+
+    
+
+    <!-- Typekit -->
+    
+      <script type="text/javascript">
+        (function() {
+          var config = {
+            kitId: 'hjp0pft',
+            scriptTimeout: 3000
+          };
+          var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/( |^)wf-loading( |$)/g,"");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script");tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(a&&a!="complete"&&a!="loaded")return;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
+        })();
+      </script>
+    
+  </head>
+  <body><div id="container">
+  <div id="nav">
+    
+      <div id="header">
+        <a href="#" id="logo">epub.js</a>
+      </div>
+    
+    <ul id="sections">
+      
+        <li>
+          <a href="#upcoming-updates">Upcoming Updates</a>
+          
+        </li>
+      
+        <li>
+          <a href="#why-epub">Why EPUB</a>
+          
+        </li>
+      
+        <li>
+          <a href="#running-locally">Running Locally</a>
+          
+        </li>
+      
+        <li>
+          <a href="#building-for-distribution">Building for Distribution</a>
+          
+        </li>
+      
+        <li>
+          <a href="#getting-started">Getting Started</a>
+          
+        </li>
+      
+        <li>
+          <a href="#persistence-offline-storage">Persistence / Offline Storage</a>
+          
+        </li>
+      
+        <li>
+          <a href="#hooks">Hooks</a>
+          
+        </li>
+      
+        <li>
+          <a href="#additional-resources">Additional Resources</a>
+          
+        </li>
+      
+        <li>
+          <a href="#other">Other</a>
+          
+        </li>
+      
+    </ul>
+    
+      <div class="extra" id="github">
+        <a href="https://github.com/fchasen/epub.js">Source on GitHub</a>
+      </div>
+      
+        <div class="extra" id="github-issues">
+          <a href="https://github.com/fchasen/epub.js/issues">Issues</a>
+        </div>
+      
+      
+    
+    
+  </div>
+  <div id="content">
+    
+      <a href="https://github.com/fchasen/epub.js" id="github-ribbon"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    
+    <h1>Epub.js</h1>
+<p><img src="http://fchasen.com/futurepress/fp.png" alt="FuturePress Views"></p>
+<p>Epub.js is a javascript library for rendering ePUB&#39;s in the browser, across many devices.</p>
+<p>Epub.js provides common ebook functions (such as persistence and pagination) without the need to develop a dedicated application or plugin.</p>
+<p>Unlike an application, our HTML / Javascript reader can be hosted anywhere and can be easily customized using javascript, such as changing the interface or adding annotation functionality.</p>
+<p><a href="http://fchasen.github.com/epub.js/demo/">Try it while reading Moby Dick</a></p>
+<h2 id='upcoming-updates'>Upcoming Updates</h2 id='upcoming-updates'>
+<ul>
+<li><p>Update documentation with the new API</p>
+</li>
+<li><p>Offline storage is being update to work with the new api.</p>
+</li>
+<li><p>Tests</p>
+</li>
+<li><p>A framework (backbone / angular / ?) to use for our reader demo (which we suspect is going to start expanding quickly)</p>
+</li>
+</ul>
+<h2 id='why-epub'>Why EPUB</h2 id='why-epub'>
+<p><img src="http://fchasen.com/futurepress/whyepub.png" alt="Why EPUB"></p>
+<p>ePUB is a widely used and easily convertible format.  Many books are currently in this format and it is used as the base for many proprietary formats (such as Mobi and iBooks). We have chosen the ePUB standard because it brings us as close as possible to our “Books on the Web” vision, while enforcing a standard which enables the development of more advanced reader functionality.  </p>
+<p>An unzipped ePUB3 is a collection of HTML5 files, CSS, images and other media – just like any other website.  However, it enforces a schema of book components, which allows us to render a book and its parts based on a controlled vocabulary.  </p>
+<p>More specifically, the ePUB schema standardizes the table of contents, provides a manifest that enables the caching of the entire book and separates the storage of the content from how it’s displayed.</p>
+<h2 id='running-locally'>Running Locally</h2 id='running-locally'>
+<p>install <a href="http://nodejs.org/">node.js</a></p>
+<p>install the project dependences with npm</p>
+<pre><code class="lang-javascript">npm install</code></pre>
+<p>then you can run the reader locally with the command</p>
+<pre><code class="lang-javascript">node server.js</code></pre>
+<ul>
+<li><a href="http://localhost:8080/examples/dev.html">dev.html</a> will pull from the source files and should be used during development.</li>
+<li><a href="http://localhost:8080/demo/index.html">index.html</a> will use the minified production libraries in the dist/ folder.</li>
+</ul>
+<h2 id='building-for-distribution'>Building for Distribution</h2 id='building-for-distribution'>
+<p>Builds are concatenated and minified using <a href="http://gruntjs.com/getting-started">gruntjs</a></p>
+<p>To generate a new build run</p>
+<pre><code class="lang-javascript">grunt</code></pre>
+<h2 id='getting-started'>Getting Started</h2 id='getting-started'>
+<p>With the reader (which will create a new EPUBJS):</p>
+<pre><code class="lang-javascript">FP.filePath = <span class="string">"/path/to/js/"</span>; <span class="comment">//-- For web workers</span>
+FPR.app.init(<span class="string">"/path/to/epub/"</span>); <span class="comment">//-- Starts the reader, with path to a book</span></code></pre>
+<p>Or just get use EPUBJS with your own UI:</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> book = <span class="keyword">new</span> EPUBJS.book(<span class="string">"url/to/book"</span>);
+book.renderTo(<span class="string">"div-id"</span>);</code></pre>
+<h2 id='persistence-offline-storage'>Persistence / Offline Storage</h2 id='persistence-offline-storage'>
+<p>The eBook reader uses persistence to cache the files from an epub for offline viewing, stores information about the book, and remembers what chapter the user was on.  Being able to read a book when internet isn’t available, and remembering your place in the book is crucial to making our reader website work as an application and fulfill users expectations of how a eBook should function.</p>
+<p>Currently, there is not a great cross browser solution for dynamic file storage. Chrome supports the Filesystem API, Firefox/IE support indexedDB, and Safari/Safari Mobile support Web SQL.</p>
+<p>The reader detects the storage capabilities of the browser and picks the best available option. When internet is available, the entire book is loaded into storage. When possible, Web Workers is used to handle loading and saving the files, so as not to interfere with the reading experience.</p>
+<p>The browser tells the reader when there is Internet connectivity, and by listening to those events, it automatically switches to using the stored files. Users can also manually switch to offline mode in the interface.</p>
+<h2 id='hooks'>Hooks</h2 id='hooks'>
+<p>Similar to a plugins, Epub.js implements events that can be &quot;hooked&quot; into. Thus you can interact with and manipulate the contents of the book.</p>
+<p>Examples of this functionality is loading videos from youtube links before displaying a chapters contents or implementing annotation.</p>
+<p>Hooks require a event to latch onto and a callback for when they are finished.</p>
+<p>Example hook:</p>
+<pre><code class="lang-javascript">FP.Hooks.register(<span class="string">"beforeChapterDisplay"</span>).example = <span class="keyword">function</span>(callback, chapter){
+
+    <span class="keyword">var</span> elements = chapter.doc.querySelectorAll(<span class="string">'[video]'</span>),
+        items = Array.prototype.slice.call(elements);
+
+    items.forEach(<span class="keyword">function</span>(item){
+      <span class="comment">//-- do something with the video item</span>
+    }
+
+    <span class="keyword">if</span>(callback) callback();
+
+}</code></pre>
+<h2 id='additional-resources'>Additional Resources</h2 id='additional-resources'>
+<p>Follow us on twitter: @Epubjs</p>
+<ul>
+<li><a href="http://twitter.com/#!/Epubjs">http://twitter.com/#!/Epubjs</a></li>
+</ul>
+<h2 id='other'>Other</h2 id='other'>
+<p>EPUB is a registered trademark of the <a href="http://idpf.org/">IDPF</a>. </p>
+<p>Documentation Generated by <a href="http://documentup.com/">DocumentUp</a> </p>
+  </div>
+</div>
+</body>
+</html>
